@@ -1,0 +1,18 @@
+version: '2'
+_1
+services:
+
+  sshtunnel:
+    image: nowsci/sshtunnel
+    container_name: sshtunnel
+    volumes:
+      - ./sshtunnel/data/:/data/:ro
+    environment:
+      - REMOTE=true
+      - TUNNEL_HOST=homelab.rootit.top
+      - TUNNEL_PORT=22
+      - CONTAINER_HOST=npm_app
+      - CONTAINER_PORT=80
+      - REMOTE_PORT=5555
+      - KEY=/data/keyfile
+    restart: always
